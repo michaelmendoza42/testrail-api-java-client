@@ -163,7 +163,7 @@ public abstract class Request<T> {
                     if (supplementForDeserialization != null) {
                         return JSON.reader(responseClass).with(new InjectableValues.Std().addValue(responseClass.toString(), supplementForDeserialization)).readValue(responseStream);
                     }
-                    return JSON.readValue(responseStream, responseClass);
+                    return JSON.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY).readValue(responseStream, responseClass);
                 } else {
                     if (supplementForDeserialization != null) {
                         String supplementKey = responseType.getType().toString();
