@@ -154,7 +154,8 @@ public abstract class Request<T> {
                 }
             }
 
-            try (InputStream responseStream = new BufferedInputStream(con.getInputStream())) {
+            try {
+                InputStream responseStream = new BufferedInputStream(con.getInputStream());
                 Object supplementForDeserialization = getSupplementForDeserialization();
                 if (responseClass != null) {
                     if (responseClass == Void.class) {
