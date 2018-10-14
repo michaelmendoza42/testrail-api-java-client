@@ -178,6 +178,8 @@ public abstract class Request<T> {
                     }
                     return JSON.readValue(responseStream, responseType);
                 }
+            } catch (Throwable th) {
+              //idk
             }
 
         } catch (MalformedURLException e) {
